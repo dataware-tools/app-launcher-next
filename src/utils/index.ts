@@ -6,6 +6,8 @@ const APP_ROUTE = {
 
 const SwrOptions = {
   errorRetryCount: 1,
+  fetcher: (resource: any, init: any) =>
+    fetch(resource, init).then((res) => res.json()),
 };
 
 const authConfig = {
