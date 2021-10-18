@@ -1,13 +1,13 @@
 {
-  "name": "@dataware-tools/app-template-nextjs",
+  "name": "@dataware-tools/app-launcher-next",
   "version": "0.1.0",
   "engines": {
     "node": "16.11.1",
     "npm": "8.x"
   },
   "private": true,
-  "repository": "https://github.com/dataware-tools/app-template-nextjs.git",
-  "homepage": "/app-template-nextjs",
+  "repository": "https://github.com/dataware-tools/app-launcher-next.git",
+  "homepage": "/launcher",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
