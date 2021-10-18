@@ -21,7 +21,7 @@ const apps = {
   },
   docs: {
     id: "docs",
-    icon: "book",
+    icon: "menu_book",
     name: "Documents",
     description: "Read documents",
     url: "https://dataware-tools.gitbook.io/dataware-tools/",
@@ -30,7 +30,7 @@ const apps = {
   },
   dataBrowser: {
     id: "data_browser",
-    icon: "database",
+    icon: "storage",
     name: "Data browser",
     description: "Explore data",
     url: "/data-browser",
@@ -39,7 +39,7 @@ const apps = {
   },
   userManager: {
     id: "user-manager",
-    icon: "users",
+    icon: "manage_accounts",
     name: "User manager",
     description: "authorize user",
     url: "/user-manager",
