@@ -11,16 +11,17 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useSWR from "swr";
 import packageInfo from "../../../package.json";
-import { AppCardList } from "../molecules/AppCardList";
+import { AppCardList, AppCardListProps } from "../molecules/AppCardList";
 
-const Page = (): JSX.Element => {
-  const { isAuthenticated } = useAuth0();
-  const { data, error } = useSWR(packageInfo.homepage + "/api/apps");
+export type IndexPagePresentationProps = {
+  apps: AppCardListProps["apps"];
+  isAuthenticated: boolean;
+};
 
-  useEffect(() => {
-    error && toast(JSON.stringify(error));
-  }, [error]);
-
+export const IndexPagePresentation = ({
+  apps,
+  isAuthenticated,
+}: IndexPagePresentationProps): JSX.Element => {
   const Title = ({ children }: { children: string }): JSX.Element => (
     <Typography variant="h3" sx={{ paddingTop: 1, paddingBottom: 1 }}>
       <NoticeableLetters>{children}</NoticeableLetters>
@@ -31,7 +32,7 @@ const Page = (): JSX.Element => {
     <PageContainer>
       <PageBody>
         <PageMain sx={{ padding: 2 }}>
-          {data && (
+          {apps && (
             <>
               {!isAuthenticated && (
                 <Typography variant="caption">
@@ -40,7 +41,7 @@ const Page = (): JSX.Element => {
               )}
               <Title>Internal tools</Title>
               <AppCardList
-                apps={data}
+                apps={apps}
                 location="internal"
                 publicOnly={!isAuthenticated}
               />
@@ -50,7 +51,7 @@ const Page = (): JSX.Element => {
               />
               <Title>External tools</Title>
               <AppCardList
-                apps={data}
+                apps={apps}
                 location="external"
                 publicOnly={!isAuthenticated}
               />
@@ -62,4 +63,15 @@ const Page = (): JSX.Element => {
   );
 };
 
-export { Page as IndexPage };
+export const IndexPage = (): JSX.Element => {
+  const { isAuthenticated } = useAuth0();
+  const { data: apps, error } = useSWR(packageInfo.homepage + "/api/apps");
+
+  useEffect(() => {
+    error && toast(JSON.stringify(error));
+  }, [error]);
+
+  return (
+    <IndexPagePresentation apps={apps} isAuthenticated={isAuthenticated} />
+  );
+};
