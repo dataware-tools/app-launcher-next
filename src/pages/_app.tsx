@@ -6,9 +6,11 @@ import { StylesProvider } from "@mui/styles";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { SWRConfig } from "swr";
 import packageInfo from "../../package.json";
 import { SwrOptions, authConfig, redirectUri } from "utils/index";
+import "react-toastify/dist/ReactToastify.css";
 import "./scrollbar.global.css";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
@@ -54,6 +56,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
                 redirectUri={redirectUri}
                 onRedirectCallback={onRedirectCallback}
               >
+                <ToastContainer position="bottom-right" />
                 <PageWrapper repository={packageInfo.repository}>
                   <Component {...pageProps} />
                 </PageWrapper>
