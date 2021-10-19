@@ -6,9 +6,11 @@ import { StylesProvider } from "@mui/styles";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { SWRConfig } from "swr";
 import packageInfo from "../../package.json";
 import { SwrOptions, authConfig, redirectUri } from "utils/index";
+import "react-toastify/dist/ReactToastify.css";
 import "./scrollbar.global.css";
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
@@ -39,7 +41,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <title>Data Browser - Dataware-tools</title>
+        <title>Launcher - Dataware-tools</title>
       </Head>
       <React.StrictMode>
         <SWRConfig value={SwrOptions}>
@@ -54,6 +56,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
                 redirectUri={redirectUri}
                 onRedirectCallback={onRedirectCallback}
               >
+                <ToastContainer position="bottom-right" />
                 <PageWrapper repository={packageInfo.repository}>
                   <Component {...pageProps} />
                 </PageWrapper>

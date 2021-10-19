@@ -23,6 +23,10 @@ export default class MyDocument extends Document {
       />
     */}
           <link rel="icon" href={`${packageInfo.homepage}/favicon.ico`} />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <meta charSet="utf-8" />
