@@ -1,15 +1,4 @@
-## First thing to do
-
-The things you have to do after creating a repository based on this template are as follows:
-
-- Change `name` in `package.json` to the name of your application
-- Change `repository` in `package.json` to the newly created repository
-  - This property is used for link in footer in default.
-- Change `homepage` in `package.json` to your application name
-  - This property is used for root path of application in default.
-  - This should be the same as `urlPrefix` in
-    [App Catalog](https://github.com/dataware-tools/protocols/blob/master/catalogs/app.json)
-    if you want to register your application to dataware-tools
+# Launcher for dataware-tools web app
 
 ## Getting started
 
@@ -36,11 +25,9 @@ npm run dev
 yarn dev
 ```
 
-Open http://localhost:3000/{homepage} with your browser to see the result.
+Open http://localhost:3000/launcher with your browser to see the result.
 
-(If you configured `homepage` property of `package.json` to `app-template-nextjs` , you should open http://localhost:3000/app-template-nextjs)
-
-You can start editing the page by modifying `pages/*.tsx`, `components/*.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/*.tsx`, `components/*.tsx`. The page is updated automatically as you edit the file.
 
 ## Run in docker container
 
@@ -51,12 +38,6 @@ $ export DOCKER_BUILDKIT=1
 $ docker build -t app:latest --secret id=npmrc,src=${HOME}/.npmrc .
 ```
 
-On MacOS or Linux, you may have to run the following commands before building the image.
-
-```bash
-$ ssh-add
-```
-
 ### How to run docker-container
 
 After success of building image
@@ -64,6 +45,20 @@ After success of building image
 ```bash
 $ docker-compose up
 ```
+
+## Change listed apps
+
+If you want to change listed apps, fix `public/apps.yaml`.
+
+Bellow attribution should be contained each apps.
+
+- id: This should be unique value in the file.
+- icon: Image URL or name of [Material icons](https://fonts.google.com/icons)
+- name: This is shown as title of card ui.
+- description: This is shown as body of card ui.
+- url: Link for app.
+- visibility: "public", or "private". If visibility is "public", the app is shown when use is not authenticated.
+- location: "internal", or "external".
 
 ## Npm scripts
 
@@ -148,12 +143,3 @@ $ docker-compose up
 - [volta](https://volta.sh/)
 
   JavaScript tool manager like nvm, n
-
-## Note
-
-- This template is intend to use for Single Page Application. So if you want create SSR, or SSG application, you should change some config of this template
-
-## TODOs
-
-- Add container for development
-- Add .devcontainer.json example for supporting vscode remote container
