@@ -1,4 +1,6 @@
-# Launcher for dataware-tools web app
+# app-data-browser-next
+
+Web-application for browsing data in Dataware-tools.
 
 ## Getting started
 
@@ -13,9 +15,10 @@ yarn install
 If you want to change Auth0's configurations (i.e., client-id, domain, etc.),
 you need to set the following environment variables:
 
-- `NEXT_PUBLIC_DATAWARE_TOOLS_AUTH_CONFIG_DOMAIN`: Domain (default: `dataware-tools.us.auth0.com`)
-- `NEXT_PUBLIC_DATAWARE_TOOLS_AUTH_CONFIG_CLIENT_ID`: Client ID (default: the one for the demo page)
-- `NEXT_PUBLIC_DATAWARE_TOOLS_AUTH_CONFIG_API_URL`: API URL (default: `https://demo.dataware-tools.com/`)
+- `DATAWARE_TOOLS_AUTH_CONFIG_DOMAIN`: Domain of auth0 (default: `dataware-tools.us.auth0.com`)
+- `DATAWARE_TOOLS_AUTH_CONFIG_CLIENT_ID`: Client ID of auth0 (default: the one for the demo page)
+- `DATAWARE_TOOLS_AUTH_CONFIG_API_URL`: Audience of auth0 (default: `https://demo.dataware-tools.com/`)
+- `BACKEND_API_PREFIX`: Backend api url prefix(default: `/api/latest`)
 
 Next, run the development server:
 
@@ -25,9 +28,9 @@ npm run dev
 yarn dev
 ```
 
-Open http://localhost:3000/launcher with your browser to see the result.
+Open http://localhost:3000 with your browser to see the result.
 
-You can start editing the page by modifying `pages/*.tsx`, `components/*.tsx`. The page is updated automatically as you edit the file.
+You can start editing the page by modifying `pages/*.tsx`, `components/*.tsx`. The page auto-updates as you edit the file.
 
 ## Run in docker container
 
@@ -35,7 +38,13 @@ You can start editing the page by modifying `pages/*.tsx`, `components/*.tsx`. T
 
 ```bash
 $ export DOCKER_BUILDKIT=1
-$ docker build -t app:latest --secret id=npmrc,src=${HOME}/.npmrc .
+$ docker build -t app:latest --ssh default --secret id=npmrc,src=${HOME}/.npmrc .
+```
+
+On MacOS or Linux, you may have to run the following commands before building the image.
+
+```bash
+$ ssh-add
 ```
 
 ### How to run docker-container
@@ -43,22 +52,8 @@ $ docker build -t app:latest --secret id=npmrc,src=${HOME}/.npmrc .
 After success of building image
 
 ```bash
-$ docker-compose up
+$ dc up
 ```
-
-## Change listed apps
-
-If you want to change listed apps, fix `public/apps.yaml`.
-
-Bellow attribution should be contained each apps.
-
-- id: This should be unique value in the file.
-- icon: Image URL or name of [Material icons](https://fonts.google.com/icons)
-- name: This is shown as title of card ui.
-- description: This is shown as body of card ui.
-- url: Link for app.
-- visibility: "public", or "private". If visibility is "public", the app is shown when use is not authenticated.
-- location: "internal", or "external".
 
 ## Npm scripts
 
@@ -74,9 +69,9 @@ Bellow attribution should be contained each apps.
 
 ### Production
 
-- [Next.js](https://nextjs.org/learn/basics/create-nextjs-app)
+- [Vite](https://vitejs.dev/guide/)
 
-  React Framework. No complex config needed, but extendable.
+  Build tool for modern front end application aiming to provide a fast development experience.
 
 - [Material-UI](https://next.material-ui.com/getting-started/usage/)
 
@@ -137,9 +132,3 @@ Bellow attribution should be contained each apps.
 - [stylelint](https://stylelint.io/user-guide/get-started#customize)
 
   High customizable linter for CSS/Sass/CSSinJS.
-
-### Recommended CLI tools
-
-- [volta](https://volta.sh/)
-
-  JavaScript tool manager like nvm, n

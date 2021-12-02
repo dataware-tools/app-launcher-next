@@ -1,12 +1,10 @@
 version: "3"
 services:
-  app-template-nextjs:
+  app-role-manager:
     image: app:latest
     ports:
       - 3000:3000
     volumes:
-      - type: bind
-        source: ./
-        target: /opt/app
-    command: node_modules/.bin/next start
+      - .:/opt/app
+    command: node_modules/.bin/serve dist -p 3000 -s
     tty: true
