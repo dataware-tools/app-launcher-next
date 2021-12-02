@@ -40,7 +40,6 @@ export const AppCard = ({
             alignItems: "center",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element  */}
           <img src={icon} alt={`Icon of ${name}`} />
         </Box>
       ) : (

@@ -51,6 +51,8 @@ export const customRender = (
 ) => render(ui, { wrapper: AllTheProviders, ...options });
 
 export const CONST_STORY_BOOK = {
+  DATABASE_ID: "test1",
+  RECORD_ID: "20210714-055053-234",
   PARAM_SKIP_VISUAL_REGRESSION_TEST: { loki: { skip: true } },
 };
 

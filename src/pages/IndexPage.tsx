@@ -10,8 +10,11 @@ import Divider from "@mui/material/Divider";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import useSWR from "swr";
-import packageInfo from "../../../package.json";
-import { AppCardList, AppCardListProps } from "../molecules/AppCardList";
+import packageInfo from "../../package.json";
+import {
+  AppCardList,
+  AppCardListProps,
+} from "../components/molecules/AppCardList";
 
 export type IndexPagePresentationProps = {
   apps: AppCardListProps["apps"];
@@ -65,7 +68,7 @@ export const IndexPagePresentation = ({
 
 export const IndexPage = (): JSX.Element => {
   const { isAuthenticated } = useAuth0();
-  const { data: apps, error } = useSWR(packageInfo.homepage + "/api/apps");
+  const { data: apps, error } = useSWR(packageInfo.basePath + "/apps.json");
 
   useEffect(() => {
     error && toast(JSON.stringify(error));

@@ -17,7 +17,6 @@ module.exports = {
     "plugin:import/typescript",
     // "plugin:jsx-a11y/recommended",
     // "plugin:compat/recommended",
-    "next",
     "prettier",
   ],
   parser: "@typescript-eslint/parser",
@@ -73,9 +72,11 @@ module.exports = {
     "import/no-anonymous-default-export": [
       "warn",
       {
-        allowCallExpression: false,
+        allowCallExpression: false, // The true value here is for backward compatibility
         allowObject: true, // storybook may have unnamed object export
       },
     ],
+    // Image component may not be used in this project
+    "@next/next/no-img-element": "off",
   },
 };
