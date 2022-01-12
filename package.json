@@ -43,12 +43,12 @@
     "react-router-dom": "^6.2.1",
     "react-toastify": "^8.1.0",
     "serve": "^13.0.2",
-    "swr": "^1.0.1"
+    "swr": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@originjs/vite-plugin-commonjs": "^1.0.1",
-    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-actions": "^6.4.12",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
     "@storybook/react": "^6.4.9",
