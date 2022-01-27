@@ -42,7 +42,7 @@ export const IndexPagePresentation = ({
             <>
               {!isAuthenticated && (
                 <Typography variant="caption">
-                  Please login to see all of the available tools.
+                  Please login to use all of the available tools.
                 </Typography>
               )}
               <Title>
