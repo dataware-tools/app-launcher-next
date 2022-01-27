@@ -30,6 +30,9 @@ export const IndexPagePresentation = ({
       <NoticeableLetters>{children}</NoticeableLetters>
     </Typography>
   );
+  const isExistExternalApps = apps
+    ? Object.values(apps).some((app) => app.location === "external")
+    : false;
 
   return (
     <PageContainer>
@@ -42,22 +45,28 @@ export const IndexPagePresentation = ({
                   Please login to see all of the available tools.
                 </Typography>
               )}
-              <Title>Internal tools</Title>
+              <Title>
+                {isExistExternalApps ? "Internal tools" : "Contents"}
+              </Title>
               <AppCardList
                 apps={apps}
                 location="internal"
                 publicOnly={!isAuthenticated}
               />
-              <Divider
-                variant="middle"
-                sx={{ paddingTop: 1, paddingBottom: 1 }}
-              />
-              <Title>External tools</Title>
-              <AppCardList
-                apps={apps}
-                location="external"
-                publicOnly={!isAuthenticated}
-              />
+              {isExistExternalApps ? (
+                <>
+                  <Divider
+                    variant="middle"
+                    sx={{ paddingTop: 1, paddingBottom: 1 }}
+                  />
+                  <Title>External tools</Title>
+                  <AppCardList
+                    apps={apps}
+                    location="external"
+                    publicOnly={!isAuthenticated}
+                  />
+                </>
+              ) : null}
             </>
           )}
         </PageMain>
