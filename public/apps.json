@@ -13,7 +13,7 @@
     "icon": "menu_book",
     "name": "Documents",
     "description": "Read documents",
-    "url": "https://dataware-tools.gitbook.io/dataware-tools/",
+    "url": "https://docs.dataware-tools.com/",
     "visibility": "public",
     "location": "internal"
   },
