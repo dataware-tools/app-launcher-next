@@ -8,26 +8,32 @@ import { AppType } from "utils/types";
 export type AppCardProps = Pick<
   AppType,
   "icon" | "name" | "description" | "url"
->;
+> & { disable?: boolean };
 
 export const AppCard = ({
   icon,
   name,
   description,
   url,
+  disable,
 }: AppCardProps): JSX.Element => {
   return (
     <Card
       variant="outlined"
-      onClick={() => {
-        window.location.href = url;
-      }}
+      onClick={
+        disable
+          ? undefined
+          : () => {
+              window.location.href = url;
+            }
+      }
       sx={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        ":hover": { cursor: "pointer" },
+        ":hover": { cursor: disable ? undefined : "pointer" },
+        opacity: disable ? "50%" : undefined,
       }}
     >
       {icon.startsWith("http") ? (
