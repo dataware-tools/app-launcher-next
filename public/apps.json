@@ -1,13 +1,4 @@
 {
-  "webviz": {
-    "id": "webviz",
-    "icon": "https://webviz.io/favicon.ico",
-    "name": "WebViz",
-    "description": "Modern rosbag player",
-    "url": "http://webviz.hdwlab.co.jp/",
-    "visibility": "public",
-    "location": "external"
-  },
   "docs": {
     "id": "docs",
     "icon": "menu_book",
