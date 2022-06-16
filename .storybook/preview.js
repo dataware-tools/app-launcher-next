@@ -5,9 +5,10 @@ import { StylesProvider } from "@mui/styles";
 import { theme } from "@dataware-tools/app-common";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import baseConfig from "@dataware-tools/dev-tools-for-react/configs/.storybook/preview"
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  ...baseConfig.parameters
 };
 
 export const decorators = [
