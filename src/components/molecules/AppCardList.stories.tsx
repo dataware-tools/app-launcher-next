@@ -49,6 +49,6 @@ const apps = {
 };
 
 Default.args = {
-  apps: apps,
+  apps,
   location: "internal",
 };
