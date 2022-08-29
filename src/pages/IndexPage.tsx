@@ -4,11 +4,11 @@ import {
   PageBody,
   PageContainer,
   PageMain,
+  enqueueErrorToastForFetchError,
 } from "@dataware-tools/app-common";
 import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useEffect } from "react";
-import { toast } from "react-toastify";
 import useSWR from "swr";
 import packageInfo from "../../package.json";
 import {
@@ -80,7 +80,7 @@ export const IndexPage = (): JSX.Element => {
   const { data: apps, error } = useSWR(packageInfo.basePath + "/apps.json");
 
   useEffect(() => {
-    error && toast(JSON.stringify(error));
+    error && enqueueErrorToastForFetchError("Fail to fetch app catalog", error);
   }, [error]);
 
   return (
